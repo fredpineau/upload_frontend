@@ -1,0 +1,9 @@
+:root { --maxw: 900px; --radius: 12px; }
+body { font-family: system-ui, Arial; background:#f6f8fb; color:#222; display:flex; min-height:100vh; align-items:center; justify-content:center; padding:24px; }
+.container { width:100%; max-width:var(--maxw); }
+h1 { text-align:center; margin-bottom:18px; }
+.card { background:white; padding:16px; border-radius:var(--radius); box-shadow: 0 6px 18px rgba(20,30,60,0.06); }
+.dropzone { display:flex; align-items:center; justify-content:center; min-height:160px; border:2px dashed #d6dce6; border-radius:10px; cursor:pointer; margin-bottom:12px; }
+.actions { display:flex; gap:10px; justify-content:center; }
+button { padding:10px 16px; border-radius:8px; border: none; cursor:pointer; }
+#result { margin-top:14px; white-space:pre-wrap; font-family:monospace; font-size:13px; }

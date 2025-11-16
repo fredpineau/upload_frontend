@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mon site d'upload</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Déposer un fichier</h1>
+
+    <form id="uploadForm" class="card">
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" name="file" hidden />
+        <div id="dzText">Cliquez ou glissez-déposez un fichier ici</div>
+      </label>
+
+      <div class="actions">
+        <button id="uploadBtn" type="submit">Envoyer</button>
+        <button id="listBtn" type="button">Voir les fichiers</button>
+      </div>
+    </form>
+
+    <section id="result" class="card"></section>
+  </main>
+
+  <script src="upload.js"></script>
+</body>
+</html>
