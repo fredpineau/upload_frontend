@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mon site d'upload</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uploader un fichier</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <main class="container">
-    <h1>Déposer un fichier</h1>
-
-    <form id="uploadForm" class="card">
-      <label class="dropzone" id="dropzone">
-        <input type="file" id="fileInput" name="file" hidden />
-        <div id="dzText">Cliquez ou glissez-déposez un fichier ici</div>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-lg bg-white p-8 rounded-2xl shadow-lg">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Déposer un fichier</h1>
+    <form id="uploadForm" class="flex flex-col items-center space-y-4">
+      <label
+        id="dropzone"
+        class="w-full flex flex-col items-center justify-center h-40 px-4 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16v-4m0 0a4 4 0 018 0m-8 0v4m8-4v4m0 0H7m8 0h4" />
+        </svg>
+        <span id="dzText" class="text-gray-500">Cliquez ou glissez-déposez un fichier ici</span>
+        <input type="file" name="file" id="fileInput" class="hidden" />
       </label>
 
-      <div class="actions">
-        <button id="uploadBtn" type="submit">Envoyer</button>
-        <button id="listBtn" type="button">Voir les fichiers</button>
-      </div>
+      <button
+        id="uploadBtn"
+        type="submit"
+        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Envoyer
+      </button>
+
+      <button
+        id="listBtn"
+        type="button"
+        class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+      >
+        Voir les fichiers
+      </button>
     </form>
 
-    <section id="result" class="card"></section>
-  </main>
+    <div id="result" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg whitespace-pre-wrap text-sm text-gray-700"></div>
+  </div>
 
   <script src="upload.js"></script>
 </body>

@@ -1,48 +1,62 @@
-const dropzone = document.getElementById('dropzone');
-const fileInput = document.getElementById('fileInput');
-const uploadForm = document.getElementById('uploadForm');
-const result = document.getElementById('result');
-const uploadBtn = document.getElementById('uploadBtn');
-const listBtn = document.getElementById('listBtn');
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("fileInput");
+const form = document.getElementById("uploadForm");
+const result = document.getElementById("result");
+const uploadBtn = document.getElementById("uploadBtn");
+const listBtn = document.getElementById("listBtn");
 
-// Drag & drop UX
-dropzone.addEventListener('click', () => fileInput.click());
-dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.style.borderColor = '#8aa'; });
-dropzone.addEventListener('dragleave', () => { dropzone.style.borderColor = ''; });
-dropzone.addEventListener('drop', (e) => {
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("dragover", (e) => {
   e.preventDefault();
-  const f = e.dataTransfer.files[0];
-  if (f) fileInput.files = e.dataTransfer.files;
+  dropzone.classList.add("border-blue-400", "bg-blue-50");
+});
+dropzone.addEventListener("dragleave", () => {
+  dropzone.classList.remove("border-blue-400", "bg-blue-50");
+});
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("border-blue-400", "bg-blue-50");
+  const files = e.dataTransfer.files;
+  if (files.length > 0) {
+    fileInput.files = files;
+  }
 });
 
-uploadForm.addEventListener('submit', async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const file = fileInput.files[0];
   if (!file) {
-    result.textContent = 'Aucun fichier choisi.';
+    result.textContent = "Aucun fichier sélectionné.";
     return;
   }
+
   uploadBtn.disabled = true;
-  result.textContent = 'Envoi en cours...';
+  result.textContent = "Envoi en cours ...";
+
+  const formData = new FormData();
+  formData.append("file", file);
+
   try {
-    const fd = new FormData();
-    fd.append('file', file);
-    const res = await fetch('https://upload-backend-pkab.onrender.com/api/upload', { method: 'POST', body: fd });
+    const res = await fetch("https://upload-backend-pkab.onrender.com/api/upload", {
+      method: "POST",
+      body: formData,
+    });
     const data = await res.json();
     result.textContent = JSON.stringify(data, null, 2);
   } catch (err) {
-    result.textContent = 'Erreur: ' + err.message;
+    result.textContent = "Erreur : " + err.message;
   } finally {
     uploadBtn.disabled = false;
   }
 });
 
-listBtn.addEventListener('click', async () => {
+listBtn.addEventListener("click", async () => {
+  result.textContent = "Chargement …";
   try {
-    const res = await fetch('https://upload-backend-pkab.onrender.com/api/upload');
+    const res = await fetch("https://upload-backend-pkab.onrender.com/api/upload");
     const data = await res.json();
     result.textContent = JSON.stringify(data, null, 2);
   } catch (err) {
-    result.textContent = 'Erreur: ' + err.message;
+    result.textContent = "Erreur : " + err.message;
   }
 });
