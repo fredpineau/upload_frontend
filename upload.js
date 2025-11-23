@@ -27,7 +27,7 @@ uploadForm.addEventListener('submit', async (e) => {
   try {
     const fd = new FormData();
     fd.append('file', file);
-    const res = await fetch('http://localhost:3000/api/upload', { method: 'POST', body: fd });
+    const res = await fetch('https://upload-backend-pkab.onrender.com/', { method: 'POST', body: fd });
     const data = await res.json();
     result.textContent = JSON.stringify(data, null, 2);
   } catch (err) {
@@ -39,7 +39,7 @@ uploadForm.addEventListener('submit', async (e) => {
 
 listBtn.addEventListener('click', async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/upload');
+    const res = await fetch('https://upload-backend-pkab.onrender.com/');
     const data = await res.json();
     result.textContent = JSON.stringify(data, null, 2);
   } catch (err) {
