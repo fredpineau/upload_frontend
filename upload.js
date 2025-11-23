@@ -3,16 +3,18 @@ const fileInput = document.getElementById("fileInput");
 const form = document.getElementById("uploadForm");
 const result = document.getElementById("result");
 const uploadBtn = document.getElementById("uploadBtn");
-const listBtn = document.getElementById("listBtn");
 
 dropzone.addEventListener("click", () => fileInput.click());
+
 dropzone.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropzone.classList.add("border-blue-400", "bg-blue-50");
 });
+
 dropzone.addEventListener("dragleave", () => {
   dropzone.classList.remove("border-blue-400", "bg-blue-50");
 });
+
 dropzone.addEventListener("drop", (e) => {
   e.preventDefault();
   dropzone.classList.remove("border-blue-400", "bg-blue-50");
@@ -50,13 +52,3 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-listBtn.addEventListener("click", async () => {
-  result.textContent = "Chargement …";
-  try {
-    const res = await fetch("https://upload-backend-pkab.onrender.com/api/upload");
-    const data = await res.json();
-    result.textContent = JSON.stringify(data, null, 2);
-  } catch (err) {
-    result.textContent = "Erreur : " + err.message;
-  }
-});
