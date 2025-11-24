@@ -3,10 +3,6 @@ const fileInput = document.getElementById("fileInput");
 const form = document.getElementById("uploadForm");
 const result = document.getElementById("result");
 const uploadBtn = document.getElementById("uploadBtn");
-const nom = document.getElementById("contact-name").value;
-const prenom = document.getElementById("contact-prenom").value;
-const email = document.getElementById("contact-email").value;
-const message = document.getElementById("contact-message").value;
 
 dropzone.addEventListener("click", () => fileInput.click());
 
@@ -29,6 +25,11 @@ dropzone.addEventListener("drop", (e) => {
 });
 
 form.addEventListener("submit", async (e) => {
+  const nom = document.getElementById("contact-name").value;
+  const prenom = document.getElementById("contact-prenom").value;
+  const email = document.getElementById("contact-email").value;
+  const message = document.getElementById("contact-message").value;
+
   e.preventDefault();
   const file = fileInput.files[0];
   if (!file) {
