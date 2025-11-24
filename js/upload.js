@@ -3,6 +3,9 @@ const fileInput = document.getElementById("fileInput");
 const form = document.getElementById("uploadForm");
 const result = document.getElementById("result");
 const uploadBtn = document.getElementById("uploadBtn");
+const name = document.getElementById("contact-name").value;
+const email = document.getElementById("contact-email").value;
+const message = document.getElementById("contact-message").value;
 
 dropzone.addEventListener("click", () => fileInput.click());
 
@@ -37,9 +40,12 @@ form.addEventListener("submit", async (e) => {
 
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("nom", name);
+  formData.append("prenom", "");
+  formData.append("email", email);
 
   try {
-    const res = await fetch("https://upload-backend-pkab.onrender.com/api/upload", {
+    const res = await fetch("https://upload-backend-pkab.onrender.com/api/upload-with-contact", {
       method: "POST",
       body: formData,
     });
