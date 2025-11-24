@@ -113,14 +113,13 @@
                 <div class="col-md-6">
                   <div class="form-wrap">
                     <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-                    <label class="form-label" for="contact-name">Your Name</label>
+                    <label class="form-label" for="contact-name">Nom</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="contact-email" type="email" name="email"
-                      data-constraints="@Required @Email">
-                    <label class="form-label" for="contact-email">Email</label>
+                    <input class="form-input" id="contact-prenom" type="text" name="prenom" data-constraints="@Required">
+                    <label class="form-label" for="contact-prenom">Prénom</label>
                   </div>
                 </div>
                 <div class="col-12">
@@ -135,7 +134,6 @@
                   <div class="form-wrap">
                     <label id="dropzone"
                       class="w-full flex flex-col items-center justify-center h-40 px-4 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
-
                       <span id="dzText" class="text-gray-500">Cliquez ou glissez-déposez un fichier ici</span>
                       <input type="file" name="file" id="fileInput" class="hidden" />
                     </label>
@@ -143,11 +141,12 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="contact-phone" type="text" name="phone"
-                      data-constraints="@PhoneNumber">
-                    <label class="form-label" for="contact-phone">Phone</label>
+                    <input class="form-input" id="contact-email" type="email" name="email"
+                      data-constraints="@Required @Email">
+                    <label class="form-label" for="contact-email">Email</label>
                   </div>
                 </div>
+                
                 <div class="col-md-6">
                   <div class="form-wrap form-button">
                     <button class="button button-block button-primary" id="uploadBtn" type="submit">Envoyer</button>

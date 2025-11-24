@@ -3,7 +3,8 @@ const fileInput = document.getElementById("fileInput");
 const form = document.getElementById("uploadForm");
 const result = document.getElementById("result");
 const uploadBtn = document.getElementById("uploadBtn");
-const name = document.getElementById("contact-name").value;
+const nom = document.getElementById("contact-name").value;
+const prenom = document.getElementById("contact-prenom").value;
 const email = document.getElementById("contact-email").value;
 const message = document.getElementById("contact-message").value;
 
@@ -40,8 +41,8 @@ form.addEventListener("submit", async (e) => {
 
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("nom", name);
-  formData.append("prenom", "");
+  formData.append("nom", nom);
+  formData.append("prenom", prenom);
   formData.append("email", email);
 
   try {
